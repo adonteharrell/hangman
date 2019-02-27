@@ -1,0 +1,181 @@
+def main_menu():
+    print("Welcome to Eskay's hangman game! This a fun, simple Python program. Score points to advance in difficulties. Good luck!")
+    main_menu_choices()
+
+def main_menu_choices():
+    print("\n 1. Easy\n 2. Medium\n 3. Hard\n ")
+    option1 = input("What difficulty would you like to try?: ")
+    if option1 == "1":
+        easy()
+    if option1 == "2":
+        medium()
+    if option1 == "3":
+        hard()
+    else:
+        print("Incorrect character, please choose between 1-3")
+        main_menu_choices()
+
+def you_win():
+    print("YOU WIN!")
+    main_menu()
+
+### EASY MODE
+
+hangman1 = ["c", "a", "t"]
+answer1 = ["x", "x", "x"]
+guess_store = []
+
+def easy():
+    print("Easy mode!\n The word is 3 letters, and is an animal, mostly found in homes. Type 3 to return you to main menu.")
+    easy_ask()
+
+def easy_ask():
+    guess = input("Enter a letter: ")
+    guess.lower()
+    if guess == "c":
+       answer1.insert(0, "c")
+       answer1.pop(1)
+       print("Yes! Your letters so far: " + str(answer1))
+       if answer1 == hangman1:
+           you_win()
+       easy_ask()
+    elif guess == "a":
+        answer1.insert(1, "a")
+        answer1.pop(2)
+        print("Yes! Your letters so far: " + str(answer1))
+        if answer1 == hangman1:
+            you_win()
+        easy_ask()
+    elif guess == "t":
+        guess.lower()
+        answer1.insert(2, "t")
+        answer1.pop(3)
+        print("Yes! Your letters so far: " + str(answer1))
+        if answer1 == hangman1:
+            you_win()
+        easy_ask()
+    elif guess == "cat":
+        you_win()
+    elif len(guess_store) > int(10):
+        print("You lose!")
+    elif guess == 3:
+        print("You suck!")
+        main_menu()
+    else:
+        guess_store.append(guess)
+        print("Incorrect letter, and you've already guessed " + str(guess_store))
+        easy_ask()
+
+### MEDIUM MODE
+
+hangman2 = ["r", "i", "c", "e"]
+answer2 = ["x", "x", "x", "x"]
+guess_store2 = []
+
+def medium():
+    print("Medium mode!\n The word is 4 letters, and is a food, put aside most dishes. Type 3 to return you to main menu.")
+    medium_ask()
+
+def medium_ask():
+    guess2 = input("Enter a letter: ")
+    if guess2 == "r":
+       answer2.insert(0, "r")
+       answer2.pop(1)
+       print("Yes! Your letters so far: " + str(answer2))
+       if answer2 == hangman2:
+           you_win()
+       medium_ask()
+    elif guess2 == "i":
+        answer2.insert(1, "i")
+        answer2.pop(2)
+        print("Yes! Your letters so far: " + str(answer2))
+        if answer2 == hangman2:
+            you_win()
+        medium_ask()
+    elif guess2 == "c":
+        answer2.insert(2, "c")
+        answer2.pop(3)
+        print("Yes! Your letters so far: " + str(answer2))
+        if answer2 == hangman2:
+            you_win()
+        medium_ask()
+    elif guess2 == "e":
+        answer2.insert(3, "e")
+        answer2.pop(4)
+        print("Yes! Your letters so far: " + str(answer2))
+        if answer2 == hangman2:
+            you_win()
+        main_menu()
+    elif guess2 == "rice":
+        you_win()
+    elif len(guess_store) > int(10):
+        print("You lose!")
+        main_menu()
+    elif guess2 == "3":
+        main_menu()
+    else:
+        guess_store2.append(guess2)
+        print("Incorrect letter, and you've already guessed " + str(guess_store2))
+        medium_ask()
+
+### HARD WORD
+
+hangman3 = ["h", "o", "n", "e", "y"]
+answer3 = ["x", "x", "x", "x", "x"]
+guess_store3 = []
+
+def hard():
+    print("HARD MODE =O!\n The word is 5 letters, and is made by bees. Type 3 to return you to main menu.")
+    hard_ask()
+
+def hard_ask():
+    guess3 = input("Enter a letter: ")
+    if guess3 == "h":
+       answer3.insert(0, "h")
+       answer3.pop(1)
+       print("Yes! Your letters so far: " + str(answer3))
+       if answer3 == hangman3:
+           you_win()
+       hard_ask()
+    elif guess3 == "o":
+        answer3.insert(1, "o")
+        answer3.pop(2)
+        print("Yes! Your letters so far: " + str(answer3))
+        if answer3 == hangman3:
+            you_win()
+        hard_ask()
+    elif guess3 == "n":
+        answer3.insert(2, "n")
+        answer3.pop(3)
+        print("Yes! Your letters so far: " + str(answer3))
+        if answer3 == hangman3:
+            you_win()
+        hard_ask()
+    elif guess3 == "e":
+        answer3.insert(3, "e")
+        answer3.pop(4)
+        print("Yes! Your letters so far: " + str(answer3))
+        if answer3 == hangman3:
+            you_win()
+        hard_ask()
+    elif guess3 == "y":
+        answer3.insert(4, "y")
+        answer3.pop(5)
+        print("Yes! Your letters so far: " + str(answer3))
+        if answer3 == hangman3:
+            you_win()
+        hard_ask()
+    elif guess3 == "honey":
+       you_win()
+    elif len(guess_store) > int(10):
+        print("You lose!")
+        main_menu()
+    elif guess3 == "3":
+        main_menu()
+    else:
+        guess_store3.append(guess3)
+        print("Incorrect letter, and you've already guessed " + str(guess_store3))
+        hard_ask()
+
+main_menu()
+
